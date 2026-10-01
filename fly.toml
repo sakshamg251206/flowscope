@@ -1,0 +1,19 @@
+app = "flowscope"
+primary_region = "sin"   # Binance futures rejects US IPs
+
+[build]
+
+[env]
+  FEED = "binance"
+  SYMBOLS = "BTCUSDT,ETHUSDT,SOLUSDT"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = "off"   # the engine must keep streaming to build history
+  min_machines_running = 1
+
+  [[http_service.checks]]
+    path = "/api/health"
+    interval = "30s"
+    timeout = "5s"

@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: flowscope
+    runtime: docker
+    region: singapore        # Binance futures rejects US IPs; keep this outside the US
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: FEED
+        value: binance
+      - key: SYMBOLS
+        value: BTCUSDT,ETHUSDT,SOLUSDT
